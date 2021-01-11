@@ -19,7 +19,7 @@ def readfile(filename):
 
 
 install_reqs = [
-    'Pillow>=8.1.0,
+    'Pillow>=8.1.0',
 ]
 
 
