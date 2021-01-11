@@ -1,6 +1,6 @@
-import os.path
-
 from imagecleaner._version import __version__ as version
+import os
+
 
 try:
     from setuptools import find_packages, setup
@@ -19,8 +19,7 @@ def readfile(filename):
 
 
 install_reqs = [
-    'Pillow>=2.6.1',
-    'appdirs>=1.4.0',
+    'Pillow>=8.1.0,
 ]
 
 

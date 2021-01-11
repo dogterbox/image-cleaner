@@ -11,9 +11,13 @@ You can install image cleaner using pip.
 
 .. code-block:: console
 
-   $ pip install imagecleaner
-   # or install master branch
-   $ pip install git+git@github.com:Kjwon15/image-cleaner.git
+   $ pip install git+git@github.com:dogterbox/image-cleaner.git
+
+   or
+   
+   $ git clone https://github.com/dogterbox/image-cleaner.git --depth 1
+   $ cd image-cleaner/
+   $ pip install .
 
 
 Usage

@@ -1,27 +1,16 @@
+from . import __version__
+from collections import defaultdict, namedtuple
+from multiprocessing import Pool, cpu_count
+from PIL import Image
 import argparse
 import functools
 import hashlib
 import logging
+import tempfile
 import os
 
-from collections import defaultdict, namedtuple
-from multiprocessing import Pool, cpu_count
-from os import path
 
-import appdirs
-from PIL import Image
-
-from . import __version__
-
-try:
-    xrange
-except NameError:
-    xrange = range
-
-caching_dir = appdirs.user_cache_dir('imagecleaner', 'kjwon15')
-if not path.exists(caching_dir):
-    os.mkdir(caching_dir)
-
+caching_dir = tempfile.mkdtemp()
 logger = logging.getLogger(__name__)
 
 
@@ -32,7 +21,7 @@ def dhash(image, hash_size):
         Image.ANTIALIAS,
     )
 
-    cache_name = path.join(
+    cache_name = os.path.join(
         caching_dir,
         '{}-S{}'.format(
             hashlib.sha256(image.tobytes()).hexdigest(),
@@ -46,8 +35,8 @@ def dhash(image, hash_size):
             logger.debug('Using cache')
     except (IOError, ValueError):
         differences = []
-        for row in xrange(hash_size):
-            for col in xrange(hash_size):
+        for row in range(hash_size):
+            for col in range(hash_size):
                 pixel_left = image.getpixel((col, row))
                 pixel_right = image.getpixel((col + 1, row))
 

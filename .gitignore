@@ -93,3 +93,4 @@ ENV/
 # Editor files
 
 .*.sw?
+.idea/
